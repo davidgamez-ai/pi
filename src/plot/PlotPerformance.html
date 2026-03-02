@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Plotly Graph Plotting library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="MazePerformanceGraphDiv"></div>
+    <div id="MLPerformanceGraphDiv"></div>
+
+  <script>
+    /*
+    ---------------DATA---------------
+    Total number of data points: 1000
+        MachineLearning: Current interval: 3 ms. Interval mean: 2.5238095238095237 ms. Interval sample SD: 0.6015852075182383. Number of measurements: 21.
+    Total number of data points: 1500.
+        MachineLearning: Current interval: 4 ms. Interval mean: 4.25 ms. Interval sample SD: 0.9665456669582609. Number of measurements: 20
+    Total number of data points: 2000.
+        MachineLearning: Current interval: 5 ms. Interval mean: 6.15 ms. Interval sample SD: 0.5871429486123997. Number of measurements: 20.
+    Total number of data points: 7457
+        MachineLearning: Current interval: 25 ms. Interval mean: 28.05 ms. Interval sample SD: 3.9132030224276435. Number of measurements: 20.
+    Total number of data points: 8827.
+        MachineLearning: Current interval: 38 ms. Interval mean: 37.95 ms. Interval sample SD: 6.468343967679094. Number of measurements: 20.
+
+    Total number of transitions: 144.
+        MazeAgent: Current interval: 25 ms. Interval mean: 24.571428571428573 ms. Interval sample SD: 9.238892945431441. Number of measurements: 21.
+    Total number of transitions: 224.
+        MazeAgent: Current interval: 48 ms. Interval mean: 46.35 ms. Interval sample SD: 6.409491317364305. Number of measurements: 20.
+    AgentMaze. Total number of transitions: 512.
+        MazeAgent: Current interval: 46 ms. Interval mean: 43.1 ms. Interval sample SD: 3.1606128652858656. Number of measurements: 20.
+    Total number of transitions: 656.
+        MazeAgent: Current interval: 91 ms. Interval mean: 118.75 ms. Interval sample SD: 30.612819812002048. Number of measurements: 20.
+    Total number of transitions: 928.
+        MazeAgent: Current interval: 119 ms. Interval mean: 129.5 ms. Interval sample SD: 44.416094759492424. Number of measurements: 20.
+    Total number of transitions: 1248.
+        MazeAgent: Current interval: 163 ms. Interval mean: 159 ms. Interval sample SD: 48.05255059877278. Number of measurements: 22.
+     */
+
+    const mazeTrace = {
+        x: [144, 224, 512, 656, 928, 1248],
+        y: [24.57, 46.35, 43.1, 118.75, 129.5, 159],
+        name: 'Maze Agent',
+        error_y: {
+            type: 'data',
+            array: [9.23, 6.41, 3.16, 30.61, 44.42, 48.05],
+            visible: true
+        },
+        type: 'lines+markers',
+        line: {
+            color: "rgb(200,0,0)",
+            width: 3
+        },
+        marker:{
+            size: 10,
+        }
+    };
+
+    const mlTrace = {
+        x: [1000, 1500, 2000, 7457, 8827],
+        y: [2.52, 4.25, 6.15, 28.05, 37.95],
+        name: 'Time-series Agent',
+        error_y: {
+            type: 'data',
+            array: [0.60, 0.97, 0.59, 3.91, 6.47],
+            visible: true
+        },
+        type: 'lines+markers',
+        line: {
+            color: "rgb(0,200,0)",
+            width:3
+        },
+        marker:{
+            size: 10
+        }
+
+    };
+
+    const mazeLayout = {
+        title: "Intelligence Calculation Time",
+        xaxis: {
+            title: 'Number of Actions',
+            range: [120, 1300],
+            tickfont: {
+                size: 17,
+            },
+            titlefont: {
+                size: 20,
+            },
+            tickwidth: 3,
+            ticklen: 10,
+            linewidth: 2
+        },
+        yaxis: {
+            title: 'Time (ms)',
+            range: [0, 210],
+            tickfont: {
+                size: 17,
+            },
+            titlefont: {
+                size: 20,
+            },
+            tickwidth: 3,
+            ticklen: 10,
+            linewidth: 2
+        }
+    };
+
+
+    const mlLayout = {
+        title: "Intelligence Calculation Time",
+        xaxis: {
+            title: 'Number of Items',
+            range: [800, 9000],
+            tickfont: {
+                size: 17,
+            },
+            titlefont: {
+                size: 20,
+            },
+            tickwidth: 3,
+            ticklen: 10,
+            linewidth: 2
+        },
+        yaxis: {
+            title: 'Time (ms)',
+            range: [0, 45],
+            tickfont: {
+                size: 17,
+            },
+            titlefont: {
+                size: 20,
+            },
+            tickwidth: 3,
+            ticklen: 10,
+            linewidth: 2
+        }
+    };
+
+    Plotly.newPlot('MazePerformanceGraphDiv', [mazeTrace], mazeLayout);
+    Plotly.newPlot('MLPerformanceGraphDiv', [mlTrace], mlLayout);
+
+
+  </script>
+
+</body>
+</html>

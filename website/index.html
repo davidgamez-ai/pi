@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Import TensorFlow.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.5.0/tf.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <!-- Bootstrap - must come after Popper and jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Stylesheets for page -->
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/agent.css">
+    <link rel="stylesheet" type="text/css" href="./css/ml.css">
+
+    <!-- Plotly Graph Plotting library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- lzutf8 compression library -->
+    <script id="lzutf8" src="https://cdn.jsdelivr.net/npm/lzutf8/build/production/lzutf8.js"></script>
+
+    <title>A Universal Measure of Intelligence based on Prediction</title>
+    <link rel="icon" type="image/x-icon" href="./images/pi_icon_2.png">
+</head>
+<body>
+<div class="container">
+    <h1><span class="floki">P</span>: A Universal Measure of Intelligence based on Prediction</h1>
+
+        <!-- Tab HTML -->
+        <ul class="nav nav-tabs" id="MainTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Introduction</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="agent-maze-tab" data-toggle="tab" href="#agent-maze" role="tab" aria-controls="agent-maze" aria-selected="false">Maze Experiments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="machine-learning-tab" data-toggle="tab" href="#machine-learning" role="tab" aria-controls="machine-learning" aria-selected="false">Time Series Experiments</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="MainTabContents">
+
+            <!-- ***********  INTRODUCTION TAB ************ -->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <h2>Introduction</h2>
+                <div class="textWrap">
+                    <p>
+                        This website describes my research on a new measure of intelligence.
+                    </p>
+                    <p>
+                        More information about the theoretical background and algorithm is available in the following publications:
+                        <ul>
+                            <li style="margin-bottom: 10px;">
+                                D. Gamez (2023). Intelligence and Consciousness in Natural and Artificial Systems. In <a href="https://www.worldscientific.com/worldscibooks/10.1142/13421" target="_blank">
+                                    <i>Computational Approaches to Conscious Artificial Intelligence</i></a> [<a href="http://www.davidgamez.eu/papers/Gamez_AIConsciousnessNaturalArtificialSystems_AuthorVersion.pdf" target="_blank">Author Version</a>].
+                            </li>
+                            <li>
+                                D. Gamez (2021) Measuring Intelligence in Natural and Artificial Systems. <i>Journal of Artificial Intelligence and Consciousness</i>, 8(2): 285-302 [<a href="http://www.davidgamez.eu/papers/Gamez21_MeasuringIntelligenceNaturalArtificialSystems_AuthorVersion.pdf" target="_blank">Author Version</a>].
+                            </li>
+                        </ul>
+                        
+                    </p>
+
+                    <p>The <a href="#agent-maze" onclick="showAgentMazeTab();">Maze Experiments</a> show how an agent's predictive intelligence can
+                        be measured as it explores different maze environments.
+                    </p>
+                    <p>The <a href="#machine-learning" onclick="showMachineLearningTab();">Time Series Experiments</a>
+                        show how the predictive intelligence of a deep neural network can
+                        be measured as it learns regularities in sets of time series data.</p>
+
+                    <p>The TypeScript source code can be downloaded <a href="code/Gamez_PIMeasure_5.1.zip">here</a>.</p>
+                </div>
+            </div>
+
+            <!-- ***********  AGENT MAZE EXPERIMENTS TAB ************ -->
+            <div class="tab-pane fade" id="agent-maze" role="tabpanel" aria-labelledby="agent-maze-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Maze Agent</h2>
+                        <div class="textWrap">
+                            <p>These experiments show how <span class="floki">P</span> can be calculated for an embodied agent that learns to
+                            predict the consequences of its actions in different maze environments.</p>
+                        </div>
+                    </div><!-- End of column -->
+                </div><!-- End of row -->
+
+                <div class="row">
+                    <div style="margin: auto;"><!--Centre panel and maze -->
+                        <!-- Numerical data about maze-->
+                        <div class="agentPanel">
+                            <!-- Modal for selecting mazes -->
+                            <div id="MazeSelectModal" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <h3>Mazes</h3>
+                                    <!-- List of mazes - dynamically populated by code -->
+                                    <div id="ModalMazeList"></div>
+                                    <div id="MazeSelectFeedback" class="mazeSelectFeedback"></div>
+                                    <p><button id="CloseMazeSelectButton">Submit</button></p>
+                                </div>
+                            </div>
+
+                            <!-- Modal for showing compressibility of mazes considered independently and together -->
+                            <div id="MazeCompressibilityModal" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <h2>Maze Compressibility</h2>
+                                    <p id="MazeCompressibility"></p>
+                                    <p><b>Total compressibility: <span id="TotalMazeCompressibility">0</span></b></p>
+                                    <p><button id="CloseMazeCompressibilityButton">Close</button></p>
+                                </div>
+                            </div>
+
+                            <h3>Controls</h3>
+                            <p>Move forward <span class="keyControl">[ Space bar ]</span></p>
+                            <p>Point left/right/up/down <span class="keyControl">[ Arrow left/right/up/down ]</span></p>
+                            <p>Maze <select id="MazeSelectCombo"></select><button id="MazeSelectButton">Select</button></button></p>
+                            <p>Explore current maze: <button id="StartExploreMazeButton">Start</button>
+                                <button id="StopExploreMazeButton">Stop</button>
+                            </p>
+
+                            <h3>Intelligence</h3>
+                            <p>Polynomial window: +/- 5 </p>
+                            <p>Enable learning <input type="checkbox" id="AgentLearningCheckBox" checked></p>
+                            <p><span id="RecalculateIntelligenceSpan">Re-calculate intelligence every <input type="number" value="10" min="0" id="IntelCalcIntervalInput"> changes.</span></p>
+                            <p><button id="ShowMazeCompressibilityButton">Maze Compressibility</button> <button id="ResetAgentButton">Reset Agent</button></p>
+
+                            <h3>Plot</h3>
+                            <p>Plot intelligence for individual mazes <input type="checkbox" id="PlotCIIndividualMazesCheckBox" checked></p>
+                            <p><button id="ClearMazeGraphSelectionButton">Clear graph selection</button></p>
+
+                            <h3>Logs</h3>
+                            <div id="AM-InfoBoxDiv"></div>
+                        </div>
+
+                        <!-- Canvas to display agent and maze -->
+                        <canvas id="MazeCanvas"></canvas>
+                    </div><!-- End of center -->
+                </div><!-- End of Row -->
+
+                <!-- Tabbed graphs -->
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" id="AM-GraphTabs" >
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#AM-PredictionMatchDiv">Prediction Match</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#AM-IntelligenceDiv">Intelligence</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="AM-PredictionMatchDiv" class="container tab-pane fade show active"><br>
+                                <div id="AM-PredictionMatchGraphDiv"></div>
+                            </div>
+                            <div id="AM-IntelligenceDiv" class="container tab-pane fade"><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="AM-CrystallizedIntelligenceGraphDiv"></div>
+                                    </div>
+                                </div><!-- End of row -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="AM-FluidIntelligenceGraphDiv"></div>
+                                    </div>
+                                </div><!-- End of row -->
+                            </div>
+                        </div>
+                    </div><!-- End of column -->
+                </div><!-- End of row -->
+
+                <div class="row">
+                        <!-- Used for calculating complexity from image compression - not currently used. -->
+                        <canvas id="PredictionComplexityCanvas"></canvas>
+                        <canvas id="MazeComplexityCanvas"></canvas>
+                </div>
+            </div><!-- End of Maze Experiments Tab -->
+
+
+            <!-- ***********  MACHINE LEARNING EXPERIMENTS TAB ************ -->
+            <div class="tab-pane fade" id="machine-learning" role="tabpanel" aria-labelledby="machine-learning-tab">
+
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Time Series Agent</h2>
+                        <div class="textWrap">
+                            <p>These experiments show how <span class="floki">P</span> can be calculated for a deep neural network that makes predictions about time series data.</p>
+                            <p>Use the controls to load and train the network on the time series datasets and view the changing intelligence of the network over time.
+                            </p>
+                            <p>The machine learning is done using <a target="_blank" href="https://www.tensorflow.org/js">TensorFlow.js</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- End of row -->
+
+                <!-- Controls box -->
+                <div class="row">
+                    <div style="margin: auto;"><!--Centre panel and maze -->
+                        <div class="controls box">
+                            <!-- Modal for selecting data sets that will be used in analysis -->
+                            <div id="DataSetSelectionModal" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <h3>Data Sets for Analysis</h3>
+                                    <div id="ModalDataSetList"></div>
+                                    <p><button id="CloseDataSelectButton">Submit</button></p>
+                                </div>
+                            </div>
+
+                            <!-- Modal for showing compressibility of data sets considered independently and together -->
+                            <div id="CompressibilityModal" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <h2>Data Compressibility</h2>
+                                    <p><b>Total: <span id="TotalCompressibility">0</span></b></p>
+                                    <div id="DataSetCompressibility"></div>
+                                    <p><button id="CloseCompressibilityButton">Close</button></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div id="MLControls_Left">
+                                        <h3>Data</h3>
+                                        <p>Data sets <select id="DataSelect"></select>
+                                            <button id="SelectDataSetsButton">Select</button>
+                                        </p>
+                                        <p>Train data: <span id="TrainPercentInput">70%</span>
+                                            Validation data: <span id="ValidationPercentInput">15%</span>
+                                            Test data: <span id="TestPercentInput">15%</span></p>
+                                        <div id="DataSplitSlider"></div><!-- https://jqueryui.com/slider/#range -->
+                                        <p>Time window: <input type="number" id="TimeWindowInput" min="1"  value="3"></p>
+                                        <h3>Models</h3>
+                                        <p>Number of models: <input type="number" id="NumModelsInput" min="1" max="100" value="5"></p>
+                                        <p>LSTM units per model: <input type="number" id="LSTMUnitsInput" min="1"  value="20"></p>
+                                        <button id="BuildButton">Build</button>
+                                        <button id="ResetButton">Reset</button>
+                                        <button id="ClearTrainingButton">Clear Training</button>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div id="MLControls_Centre">
+                                        <h3>Training</h3>
+                                        <p>Number of epochs: <input type="number" id="EpochInput" min="0"  value="10"></p>
+                                        <p>Batch size: <input type="number" id="BatchSizeInput" min="0" value="10"></p>
+                                        <p>Number of training cycles <input type="number" id="TrainingCyclesInput" min="1" value="5"></p>
+                                        <p>Training: <button id="StartTrainingButton">Start</button>
+                                            <button id="StopTrainingButton">Stop</button></p>
+                                        <h3>Intelligence</h3>
+                                        <p>Polynomial window: +/- 5</p>
+                                        <p><button id="ShowCompressibilityButton">Data compressibility</button></p>
+                                        <p>T-test p-value: <select id="PValueSelect"></select>
+                                            <button id="RecalculateIntelligenceButton">Recalculate</button>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div id="MLControls_Right">
+                                        <h3>Plot</h3>
+                                        <p>Plot intelligence for individual mazes <input type="checkbox" id="PlotCIIndividualDataSetsCheckBox" checked></p>
+                                        <p>Plot batch loss <input type="checkbox" id="PlotBatchLossCheckBox"></p>
+                                        <p><button id="ClearMLGraphSelectionButton">Clear graph selection</button></p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Info box -->
+                        <div id="ML-InfoBox" class="box"></div>
+                    </div>
+                </div><!-- End of row -->
+
+                <!-- Display of training, validation and prediction data -->
+                <div class="row">
+                    <div id="DataGraphDiv"></div>
+                </div>
+
+                <!-- Tabbed machine learning graphs -->
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#TrainingDiv">Training</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#PredictionMatchDiv">Prediction Match</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#IntelligenceDiv">Intelligence</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tabbed graphs -->
+                        <div class="tab-content">
+                            <div id="TrainingDiv" class="container tab-pane active"><br>
+                                <div class="row">
+                                    <div class="col-6"><div id="BatchLossGraphDiv"></div></div>
+                                    <div class="col-6"><div id="EpochLossGraphDiv"></div></div>
+                                </div><!-- End of row -->
+                            </div>
+                            <div id="PredictionMatchDiv" class="container tab-pane fade"><br>
+                                <div class="row">
+                                    <div class="col-12"><div id="PredictionMatchGraphDiv"></div></div>
+                                </div><!-- End of row -->
+                                <div class="row">
+                                    <div class="col-12"><div id="PredictionProbabilityGraphDiv"></div></div>
+                                </div><!-- End of row -->
+                            </div>
+                            <div id="IntelligenceDiv" class="container tab-pane fade"><br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="ML-CrystallizedIntelligenceGraphDiv"></div>
+                                    </div>
+                                </div><!-- End of row -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="ML-FluidIntelligenceGraphDiv"></div>
+                                    </div>
+                                </div><!-- End of row -->
+                            </div>
+                        </div>
+                    </div><!-- End of column -->
+                </div><!-- End of row -->
+
+            </div><!-- End of machine learning tab -->
+        </div><!-- End of tab content-->
+
+        <div class="row">
+            <footer><hr>Website and contents created by David Gamez. Last modified: 17:00 5/7/2023. </footer>
+        </div>
+    </div>
+
+</div><!-- End of Bootstrap container -->
+
+<!-- Small gap at bottom of page -->
+<div><br></div>
+
+<!-- Code for tab navigation based on user clicks on links -->
+<script>
+    //Shows the agent maze tab
+    function showAgentMazeTab(){
+        console.log("Show maze tab");
+        $('#MainTabs a[href="#agent-maze\"]').tab('show');
+    }
+
+    //Shows the machine learning tab
+    function showMachineLearningTab(){
+        console.log("Show ml tab");
+        $('#MainTabs a[href="#machine-learning\"]').tab('show');
+    }
+
+</script>
+
+<!-- Code for agent maze and machine learning -->
+<script type="module">
+    import { AgentMain } from './js/agent-maze/AgentMain.js';
+    import {MachineLearningMain} from './js/machine-learning/MachineLearningMain.js';
+
+    window.onload = ()=>{
+        //Initialize agent simulation
+        new AgentMain(700, 700);
+
+        //Initialize machine learning
+        new MachineLearningMain();
+
+        //Show agent maze tab
+        //showAgentMazeTab();
+
+        //Show machine learning tab
+       // showMachineLearningTab();
+    }
+</script>
+
+</body>
+</html>

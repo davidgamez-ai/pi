@@ -1,0 +1,74 @@
+/* --------- Agent Maze Styles --------- */
+#MazeCanvas {
+    border-style: solid;
+    border-color: #505050;
+}
+
+#PredictionComplexityCanvas, #MazeComplexityCanvas{
+    display:none;
+}
+
+.agentPanel {
+    padding: 0px 0px 0px 10px;
+    border: 2px solid black;
+    float: left;
+    margin: 0px 2px 0px 0px;
+}
+
+.agentPanel p{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.agentPanel input {
+    width: 40px;
+}
+
+#AM-InfoBoxDiv {
+    overflow:auto;
+    height: 320px;
+    width: 300px;
+    font-size: 12px;
+    background-color: #fafafafa;
+    border: 1px solid gray;
+    margin: 0px 5px 5px 0px;
+}
+
+#AM-InfoBoxDiv p {
+    margin: 0px 5px 0px 5px;
+}
+
+.keyControl {
+    padding-left: 5px;
+    color: rgb(139, 139, 139);
+}
+
+#AM-CrystallizedIntelligenceGraphDiv, #AM-FluidIntelligenceGraphDiv{
+    height: 500px;
+}
+
+.textWrap{
+    text-align: justify;
+    padding: 0px 40px 0px 20px;
+}
+
+#Controls p, #CanvasPanel p {
+    margin: 0px 0px 20px 0px;
+}
+
+.mazeSelectFeedback {
+    color:red;
+    font-weight: bold;
+}
+
+#MazeSelectButton, #StartExploreMazeButton {
+    background-color: #d5f8d5;
+}
+
+#StopExploreMazeButton {
+    background-color: #f39b9b;
+}
+
+#MazeCompressibilityModal p{
+    font-size: 16px;
+}

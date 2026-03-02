@@ -1,0 +1,2 @@
+export const ALPHA_VANTAGE_API_KEY:string = "9VLBC7KRP3NMGSEW";
+
